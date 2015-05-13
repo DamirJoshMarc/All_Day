@@ -3,21 +3,20 @@
   "version": "0.1",
   "manifest_version":2,
   "description": "Handy dandy check list!",
-  "icons":  { "16": "all_day_icon_16.png",
-              "48": "all_day_icon_48.png",
-              "128": "all_day_icon_128.png" },
+  "icons":  { "16": "images/all_day_icon_16.png",
+              "48": "images/all_day_icon_48.png",
+              "128": "images/all_day_icon_128.png" },
   "background": {
-    "scripts": ["bg.js"]
+    "scripts": ["js/bg.js"]
   },
   "permissions": [
     "background",
-    "tabs",
     "http://*/*",
     "https://*/*"
   ],
   "browser_action": {
     "default_title": "All Day",
-    "default_icon": "all_day_icon_48.png",
+    "default_icon": "images/all_day_icon_48.png",
     "default_popup": "popup.html"
   },
   "options_page":"options.html"
