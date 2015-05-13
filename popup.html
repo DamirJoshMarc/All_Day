@@ -6,8 +6,147 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>All Day</title>
         <link rel="author" href="humans.txt">
+        <style type="text/css" media="screen">
+            *, *:after, *:before {
+              box-sizing: border-box;
+            }
+
+            .toDoApp {
+              min-height: 400px;
+              width: 480px;
+              position: relative;
+              background: #16a085;
+              border: solid #444 1px;
+            }
+
+            header {
+              padding: 1.5rem 1rem;
+              background: #fff;
+            }
+            header h1 {
+              font-size: 2.4rem;
+              font-weight: 100;
+              margin: 0;
+              text-align: center;
+              text-transform: uppercase;
+              color: #34495e;
+            }
+
+            .input-container {
+              position: relative;
+              overflow: auto;
+              padding: 2rem;
+            }
+
+            [name="toDoItem"] {
+              float: left;
+              width: 100%;
+              border: none;
+              border-radius: 0.5rem;
+              padding: 1rem;
+              font-size: 1.6rem;
+              font-family: 'Roboto';
+              font-weight: 300;
+              color: #16a085;
+            }
+            .add-icon {
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              right: 40px;
+            }
+            .add-icon:after {
+              content: '+';
+              display: block;
+              width: 40px;
+              height: 40px;
+              margin: 3px auto;
+              font-size: 2rem;
+              font-weight: 600;
+              text-align: center;
+              line-height: 35px;
+              background: white;
+              color: #16a085;
+              cursor: pointer;
+            }
+            .list {
+              margin: 0;
+              padding: 0 2rem 2rem;
+              list-style-type: none;
+              clear: both;
+              font-size: 1.4rem;
+            }
+            .list .close {
+              position: relative;
+              margin: 2rem 0;
+              padding: 1rem 0;
+            }
+            .list .close:after {
+              opacity: .6;
+              content: '+';
+              position: absolute;
+              right: 0;
+              top: 50%;
+              transform: translateY(-50%) rotate(45deg);
+              height: 35px;
+              width: 35px;
+              border-radius: 50%;
+              font-size: 1.8rem;
+              font-weight: 600;
+              text-align: center;
+              color: #16a085;
+              background: white;
+              cursor: pointer;
+              transition: all .2s ease-out;
+            }
+            .list .close:hover:after {
+              transform: translateY(-50%) rotate(225deg);
+              opacity: 1;
+            }    
+        </style>
     </head>
     <body>
-        This is where the magic happens!
+        <div class="toDoApp">
+          <header>
+            <h1>All Day</h1>
+          </header>
+
+          <div class="input-container">
+            <input type="text" name="toDoItem" placeholder="Type yo stuff here">
+            <div id="add" class="add-icon"></div>
+          </div>
+
+          <ul id="list" class="list">
+          </ul>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script type="text/javascript" charset="utf-8">
+            // get rid of default value in input box
+            $('input[name=toDoItem]').focus(function() {
+              $(this).val('');
+            })
+
+            $('#add').click(function() {
+              
+              var $input = $('input[name=toDoItem]').val();
+              
+              if ($input.length > 0) {
+                $('#list').append('<li class=' + 'close' + '>' + $input + '</li>');
+              } else {
+                alert("We'd all love to do nothing.");
+              }
+              
+              // reset input box to no text
+              $('input[name=toDoItem]').val('');
+            });
+
+            // remove list item
+            $('#list').on('click', '.close', function() {
+              $(this).hide('2000', function() {
+                 $(this).remove();
+              });
+              
+            });
+        </script>
     </body>
 </html>
