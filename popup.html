@@ -38,7 +38,7 @@
               padding: 2rem;
             }
 
-            [name="toDoItem"] {
+            #toDoItem {
               float: left;
               width: 100%;
               border: none;
@@ -47,7 +47,7 @@
               font-size: 1.6rem;
               font-family: 'Roboto';
               font-weight: 300;
-              color: #16a085;
+              color: #000;
             }
             .add-icon {
               position: absolute;
@@ -58,10 +58,10 @@
             .add-icon:after {
               content: '+';
               display: block;
-              width: 40px;
-              height: 40px;
+              width: 30px;
+              height: 35px;
               margin: 3px auto;
-              font-size: 2rem;
+              font-size: 30px;
               font-weight: 600;
               text-align: center;
               line-height: 35px;
@@ -77,21 +77,23 @@
               font-size: 1.4rem;
             }
             .list .close {
-              position: relative;
-              margin: 2rem 0;
-              padding: 1rem 0;
+                background: rgba(0,0,0,.2);
+                border-radius: 10px;
+                position: relative;
+                margin: 5px 0;
+                padding: 10px;
             }
             .list .close:after {
               opacity: .6;
               content: '+';
               position: absolute;
-              right: 0;
+              right: 2%;
               top: 50%;
               transform: translateY(-50%) rotate(45deg);
-              height: 35px;
-              width: 35px;
+              height: 25px;
+              width: 25px;
               border-radius: 50%;
-              font-size: 1.8rem;
+              font-size: 17.4px; /*works on extension is wompus in browser*/
               font-weight: 600;
               text-align: center;
               color: #16a085;
@@ -112,41 +114,15 @@
           </header>
 
           <div class="input-container">
-            <input type="text" name="toDoItem" placeholder="Type yo stuff here">
+            <input type="text" id="toDoItem" placeholder="Type yo stuff here">
             <div id="add" class="add-icon"></div>
           </div>
 
           <ul id="list" class="list">
+              <li class="close">hello</li>
+              <li class="close">world</li>
           </ul>
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script type="text/javascript" charset="utf-8">
-            // get rid of default value in input box
-            $('input[name=toDoItem]').focus(function() {
-              $(this).val('');
-            })
-
-            $('#add').click(function() {
-              
-              var $input = $('input[name=toDoItem]').val();
-              
-              if ($input.length > 0) {
-                $('#list').append('<li class=' + 'close' + '>' + $input + '</li>');
-              } else {
-                alert("We'd all love to do nothing.");
-              }
-              
-              // reset input box to no text
-              $('input[name=toDoItem]').val('');
-            });
-
-            // remove list item
-            $('#list').on('click', '.close', function() {
-              $(this).hide('2000', function() {
-                 $(this).remove();
-              });
-              
-            });
-        </script>
+        <script src="js/popup.js"></script>
     </body>
 </html>

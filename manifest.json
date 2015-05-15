@@ -6,11 +6,8 @@
   "icons":  { "16": "images/all_day_icon_16.png",
               "48": "images/all_day_icon_48.png",
               "128": "images/all_day_icon_128.png" },
-  "background": {
-    "scripts": ["js/bg.js"]
-  },
   "permissions": [
-    "background",
+    "storage",
     "http://*/*",
     "https://*/*"
   ],
